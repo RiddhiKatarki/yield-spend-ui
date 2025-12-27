@@ -22,7 +22,7 @@ export default function Home() {
     const usdc = getUSDC(signer);
     await usdc.approve(
       getVault(signer).address,
-      ethers.constants.MaxUint256
+      ethers.MaxUint256
     );
   }
 
