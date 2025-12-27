@@ -1,11 +1,11 @@
-import { ethers } from "ethers";
+import { BrowserProvider } from "ethers";
 
 export async function getProvider() {
-  if (!window.ethereum) {
+  if (typeof window === "undefined" || !window.ethereum) {
     throw new Error("No wallet found");
   }
 
-  const provider = new ethers.providers.Web3Provider(window.ethereum);
+  const provider = new BrowserProvider(window.ethereum);
   await provider.send("eth_requestAccounts", []);
   return provider;
 }
