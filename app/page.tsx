@@ -12,11 +12,12 @@ export default function Home() {
   const [recipient, setRecipient] = useState("");
 
   async function connect() {
-    const provider = await getProvider();
-    const s = provider.getSigner();
-    setSigner(s);
-    setAddress(await s.getAddress());
-  }
+  const provider = await getProvider();
+  const s = await provider.getSigner(); // IMPORTANT
+  setSigner(s);
+  setAddress(await s.getAddress());
+}
+
 
   async function approve() {
     const usdc = getUSDC(signer);
